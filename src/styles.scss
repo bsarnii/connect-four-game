@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+}
+button{
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+:root{
+    //Colors
+    --black: #000000;
+    --dark-purple: #5C2DD5;
+    --purple: #7945FF;
+    --red: #FD6687;
+    --yellow: #FFCE67;
+    --white: #FFFFFF;
+}
+
+.heading-l{
+    font-size: 56px;
+    line-height: 71px;
+    font-weight: bold;
+}
+.heading-m{
+    font-size: 24px;
+    line-height: 31px;
+    font-weight: bold;
+}
+.heading-s{
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: bold;
+}
+.heading-xs{
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: bold;
+}
+.body-m{
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 500;
+}
+
+.btn{
+    width: 400px;
+    height: 72px;
+    font-size: 24px;
+    line-height: 31px;
+    font-weight: bold;
+    border: 3px solid var(--black);
+    box-shadow: 0px 10px 0px var(--black);
+    border-radius: 20px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: border .3s, box-shadow .3s;
+    &:hover{
+        border: 3px solid var(--dark-purple);
+        box-shadow: 0px 10px 0px var(--dark-purple);
+    }
+}
+.btn-round{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+.btn-small{
+    @extend .heading-xs;
+    background-color: var(--dark-purple);
+    color: var(--white);
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    transition: background-color .3s;
+    &:hover{
+        background-color: var(--red);
+    }
+}
