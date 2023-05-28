@@ -10,7 +10,7 @@
 </div>
 <img class="layer black-layer" src="assets/board-layer-black-large.svg" alt="black-layer">
 <img class="layer white-layer" src="assets/board-layer-white-large.svg" alt="white-layer">
-<div class="timer">
+<div [ngStyle]="roundOver ? {'opacity':'0'} : {'opacity':'1'}" class="timer">
     <img [ngStyle]="this.turn === 'red' ? {'display':'block'} : {'display':'none'}" src="assets/turn-background-red.svg" alt="timer">
     <img [ngStyle]="this.turn === 'yellow' ? {'display':'block'} : {'display':'none'}" src="assets/turn-background-yellow.svg" alt="timer">
     <div class="timer-wrapper">
@@ -18,4 +18,9 @@
         <h3 *ngIf="this.turn === 'yellow'" class="heading-xs">PLAYER 2'S TURN</h3>
         <h4 class="heading-l">{{this.timer}}s</h4>
     </div>
+</div>
+<div *ngIf="roundOver" class="winner-container">
+    <h3 class="heading-xs">PLAYER {{this.winner === 'red' ? 1 : 2}}</h3>
+    <h4 class="heading-l">WINS</h4>
+    <button (click)="restart()" class="btn-small">PLAY AGAIN</button>
 </div>

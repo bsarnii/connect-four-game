@@ -14,10 +14,14 @@ export class PlayerVsPlayerComponent implements OnInit {
 
   scoreRed = 0;
   scoreYellow = 0;
+  winner = "";
 
   getScore(score:any){
     this.scoreRed = score.red;
     this.scoreYellow = score.yellow;
+  }
+  getWinner(winner:string){
+    this.winner = winner;
   }
 
   ngOnInit(){

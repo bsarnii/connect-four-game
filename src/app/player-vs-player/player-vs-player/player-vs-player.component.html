@@ -15,5 +15,5 @@
         <h2 class="heading-l">{{this.scoreYellow}}</h2>
     </div>
 </div>
-<app-board (scoreOutput)="getScore($event)"></app-board>
-<footer></footer>
+<app-board (scoreOutput)="getScore($event)" (winnerOutput)="getWinner($event)"></app-board>
+<footer [ngStyle]="this.winner === 'red' ? {'background-color': 'var(--red)'} : this.winner === 'yellow' ? {'background-color': 'var(--yellow)'} : {'background-color': ''} "></footer>

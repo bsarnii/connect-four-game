@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class BoardComponent {
 @Output() scoreOutput = new EventEmitter<any>();
+@Output() winnerOutput = new EventEmitter<string>();
   board = 
   [
     [
@@ -68,6 +69,7 @@ export class BoardComponent {
   ]
 
   turn = "red";
+  winner = "";
   timer = 60;
   interval:any;
   scoreRed = 0;
@@ -102,16 +104,25 @@ export class BoardComponent {
         dot.color = "none"
       })
     })
-    this.turn = "red";
+    this.turn = this.winner || 'red';
+    this.setWinner("");
+    clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      if (this.timer <= 0) {
+        this.turn = this.turn === "red" ? "yellow" : "red";
+        this.timer = 60
+      }
+      this.timer--; 
+      }, 1000);
     this.timer = 60;
-    this.scoreRed = 0;
-    this.scoreYellow = 0;
-    this.changeScore(this.scoreRed,this.scoreYellow);
     this.roundOver = false;
   }
 
   changeScore(redScore:number,yellowScore:number){
     this.scoreOutput.emit({red:redScore,yellow:yellowScore})
+  }
+  setWinner(winner:string){
+    this.winnerOutput.emit(winner)
   }
 
   ngOnInit(){
@@ -142,6 +153,9 @@ export class BoardComponent {
              this.scoreYellow++
            }
            this.roundOver = true;
+           this.winner = this.turn;
+           this.setWinner(this.turn);
+           clearInterval(this.interval);
            this.changeScore(this.scoreRed,this.scoreYellow);
            console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
            }
@@ -162,6 +176,9 @@ export class BoardComponent {
               this.scoreYellow++
             }
             this.roundOver = true;
+            this.winner = this.turn;
+            this.setWinner(this.turn);
+            clearInterval(this.interval);
             this.changeScore(this.scoreRed,this.scoreYellow);
             console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
           }
@@ -184,6 +201,9 @@ export class BoardComponent {
           this.scoreYellow++
           }
         this.roundOver = true;
+        this.winner = this.turn;
+        this.setWinner(this.turn);
+        clearInterval(this.interval);
         this.changeScore(this.scoreRed,this.scoreYellow);
         console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
         } 
@@ -207,6 +227,9 @@ export class BoardComponent {
           this.scoreYellow++
           }
         this.roundOver = true;
+        this.winner = this.turn;
+        this.setWinner(this.turn);
+        clearInterval(this.interval);
         this.changeScore(this.scoreRed,this.scoreYellow);
         console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
         } 
