@@ -15,6 +15,7 @@ export class PlayerVsPlayerComponent implements OnInit {
   scoreRed = 0;
   scoreYellow = 0;
   winner = "";
+  menuOpened = false;
 
   getScore(score:any){
     this.scoreRed = score.red;
@@ -23,7 +24,20 @@ export class PlayerVsPlayerComponent implements OnInit {
   getWinner(winner:string){
     this.winner = winner;
   }
-
+  toggleMenu(){
+    this.menuOpened = !this.menuOpened;
+    if (this.menuOpened){
+      clearInterval(this.boardComponent.interval);
+    } else{
+      this.boardComponent.interval = setInterval(() => {
+        if (this.boardComponent.timer <= 0) {
+          this.boardComponent.turn = this.boardComponent.turn === "red" ? "yellow" : "red";
+          this.boardComponent.timer = 60
+        }
+        this.boardComponent.timer--; 
+        }, 1000);
+    }
+  }
   ngOnInit(){
     if (window.location.pathname === "/"){
       document.body.setAttribute("style","background-color: var(--dark-purple)");

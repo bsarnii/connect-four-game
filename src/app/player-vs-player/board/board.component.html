@@ -5,6 +5,7 @@
         <div *ngFor="let dot of [0,1,2,3,4,5]; let j = index" class="dot dot{{j}}">
             <img *ngIf="board[i][j].clicked && board[i][j].color === 'red'" class="point-img point-img-{{j}}" src="assets/counter-red-large.svg" alt="red-dot">
             <img *ngIf="board[i][j].clicked && board[i][j].color === 'yellow'" class="point-img point-img-{{j}}" src="assets/counter-yellow-large.svg" alt="yellow-dot">
+            <div *ngIf="board[i][j].marked" class="winner-dot"></div>
         </div>
     </button>
 </div>

@@ -1,5 +1,5 @@
 <header>
-    <button class="btn-small">MENU</button>
+    <button (click)="toggleMenu()" class="btn-small">MENU</button>
     <img src="assets/logo.svg" alt="logo">
     <button (click)="restart()" class="btn-small">RESTART</button>
 </header>
@@ -17,3 +17,5 @@
 </div>
 <app-board (scoreOutput)="getScore($event)" (winnerOutput)="getWinner($event)"></app-board>
 <footer [ngStyle]="this.winner === 'red' ? {'background-color': 'var(--red)'} : this.winner === 'yellow' ? {'background-color': 'var(--yellow)'} : {'background-color': ''} "></footer>
+<div *ngIf="menuOpened" class="dark-background"></div>
+<app-pause-menu (restartOutput)="restart()" (continueOutput)="toggleMenu()" *ngIf="menuOpened"></app-pause-menu>

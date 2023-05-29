@@ -11,64 +11,65 @@ export class BoardComponent {
   board = 
   [
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
     [
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"},
-      {clicked: false, color: "none"}
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false},
+      {clicked: false, color: "none", marked: false}
     ],
   ]
 
   turn = "red";
+  firstTurn = "red";
   winner = "";
   timer = 60;
   interval:any;
@@ -102,9 +103,11 @@ export class BoardComponent {
       column.forEach(dot => {
         dot.clicked = false;
         dot.color = "none"
+        dot.marked = false;
       })
     })
-    this.turn = this.winner || 'red';
+    this.firstTurn = this.firstTurn === 'red' ? 'yellow' : 'red';
+    this.turn = this.firstTurn;
     this.setWinner("");
     clearInterval(this.interval);
     this.interval = setInterval(() => {
@@ -157,7 +160,10 @@ export class BoardComponent {
            this.setWinner(this.turn);
            clearInterval(this.interval);
            this.changeScore(this.scoreRed,this.scoreYellow);
-           console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
+           column[i].marked = true;
+           column[i+1].marked = true;
+           column[i+2].marked = true;
+           column[i+3].marked = true;
            }
       }
   
@@ -180,7 +186,10 @@ export class BoardComponent {
             this.setWinner(this.turn);
             clearInterval(this.interval);
             this.changeScore(this.scoreRed,this.scoreYellow);
-            console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
+            this.board[i][j].marked = true;
+            this.board[i+1][j].marked = true;
+            this.board[i+2][j].marked = true;
+            this.board[i+3][j].marked = true;
           }
       }
     }
@@ -205,7 +214,10 @@ export class BoardComponent {
         this.setWinner(this.turn);
         clearInterval(this.interval);
         this.changeScore(this.scoreRed,this.scoreYellow);
-        console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
+        this.board[row][col].marked = true;
+        this.board[row + 1][col + 1].marked = true;
+        this.board[row + 2][col + 2].marked = true;
+        this.board[row + 3][col + 3].marked = true;
         } 
       }
     }
@@ -231,7 +243,10 @@ export class BoardComponent {
         this.setWinner(this.turn);
         clearInterval(this.interval);
         this.changeScore(this.scoreRed,this.scoreYellow);
-        console.log(`Red:${this.scoreRed}, Yellow:${this.scoreYellow}.`)
+        this.board[row][col].marked = true;
+        this.board[row + 1][col - 1].marked = true;
+        this.board[row + 2][col - 2].marked = true;
+        this.board[row + 3][col - 3].marked = true;
         } 
       }
     }
