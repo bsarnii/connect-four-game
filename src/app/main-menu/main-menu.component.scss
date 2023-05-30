@@ -31,3 +31,14 @@
         }     
     }
 }
+
+@media screen and (max-width:575px){
+    :host{
+        width: 90%;
+        border: none;
+        box-shadow: none;
+    }
+    .btn{
+        width: 100%;
+    }
+}

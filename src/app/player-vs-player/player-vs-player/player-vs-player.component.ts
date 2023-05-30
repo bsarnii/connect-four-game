@@ -40,9 +40,9 @@ export class PlayerVsPlayerComponent implements OnInit {
   }
   ngOnInit(){
     if (window.location.pathname === "/"){
-      document.body.setAttribute("style","background-color: var(--dark-purple)");
+      document.body.setAttribute("class","main-menu-background");
     } else {
-      document.body.setAttribute("style","background-color: var(--purple)");
+      document.body.setAttribute("class","background-pvp-rules");
     }
   }
 }

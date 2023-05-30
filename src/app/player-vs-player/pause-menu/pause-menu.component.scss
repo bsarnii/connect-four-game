@@ -25,3 +25,15 @@ h1{
     background-color: var(--red);
     color: var(--white);
 }
+
+@media screen and (max-width: 575px){
+    :host{
+        width: 90%;
+    }
+    .buttons-container{
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+    .btn{
+        width: 100%;
+    }
+}

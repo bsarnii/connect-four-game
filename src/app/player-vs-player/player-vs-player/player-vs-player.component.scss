@@ -1,5 +1,6 @@
 :host{
     position: relative;
+    display: block;
 }
 header{
     display: flex;
@@ -12,12 +13,24 @@ header{
     left: 0;
     top: 50%;
     transform: translate(calc(-100% - 3rem), -30%);
+    img{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .player2-container{
     position: absolute;
     right: 0;
     top: 50%;
     transform: translate(calc(100% + 3rem), -30%);
+    img{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .scoreboard{
     background: var(--white);
@@ -30,12 +43,6 @@ header{
     align-items: center;
     h2{
         margin: 0;
-    }
-    img{
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 }
 footer{
@@ -56,4 +63,58 @@ footer{
     right: 0;
     background-color: rgba(0,0,0,.5);
     z-index: 15;
+}
+
+@media screen and (max-width: 768px){
+    header{
+        margin-bottom: 1rem;
+        button:first-child{
+            margin-right: 17px;
+        }
+    }
+    .points-container{
+        display: flex;
+        gap: 2rem;
+        margin: 0 2rem 2rem 2rem;
+
+    }
+    .scoreboard{
+        position: relative;
+        transform: none;
+        flex-grow: 1;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .player1-container{
+        img{
+            left: 0;
+            top: 50%;
+        }
+    }
+    .player2-container{
+        flex-direction: row-reverse;
+        img{
+            top: 50%;
+            right: 0;
+            left: unset;
+            transform: translate(50%,-50%);
+        }
+    }
+}
+@media screen and (max-width: 575px){
+    :host{
+        width: 90%;
+    }
+    .points-container{
+        gap: 1rem;
+        margin: 3rem .5rem 3rem .5rem;
+    }
+    .scoreboard{
+        flex-direction: column;
+        padding-top: .5rem;
+        padding-bottom: 0;
+    }
+    .heading-s{
+        margin: 0;
+    }
 }

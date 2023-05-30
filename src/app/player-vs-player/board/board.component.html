@@ -3,21 +3,31 @@
         <img *ngIf="this.turn === 'red'" class="marker marker-red" src="assets/marker-red.svg" alt="marker">
         <img *ngIf="this.turn === 'yellow'" class="marker marker-yellow" src="assets/marker-yellow.svg" alt="marker">
         <div *ngFor="let dot of [0,1,2,3,4,5]; let j = index" class="dot dot{{j}}">
+            <!--Desktop dots-->
             <img *ngIf="board[i][j].clicked && board[i][j].color === 'red'" class="point-img point-img-{{j}}" src="assets/counter-red-large.svg" alt="red-dot">
             <img *ngIf="board[i][j].clicked && board[i][j].color === 'yellow'" class="point-img point-img-{{j}}" src="assets/counter-yellow-large.svg" alt="yellow-dot">
+            <!--Mobile dots-->
+            <img *ngIf="board[i][j].clicked && board[i][j].color === 'red'" class="point-img-mobile point-img-{{j}}" src="assets/counter-red-small.svg" alt="red-dot">
+            <img *ngIf="board[i][j].clicked && board[i][j].color === 'yellow'" class="point-img-mobile point-img-{{j}}" src="assets/counter-yellow-small.svg" alt="yellow-dot">
+
             <div *ngIf="board[i][j].marked" class="winner-dot"></div>
         </div>
     </button>
 </div>
+<!--Desktop dots-->
 <img class="layer black-layer" src="assets/board-layer-black-large.svg" alt="black-layer">
 <img class="layer white-layer" src="assets/board-layer-white-large.svg" alt="white-layer">
+<!--Mobile dots-->
+<img class="layer-mobile black-layer" src="assets/board-layer-black-small.svg" alt="black-layer">
+<img class="layer-mobile white-layer" src="assets/board-layer-white-small.svg" alt="white-layer">
+
 <div [ngStyle]="roundOver ? {'opacity':'0'} : {'opacity':'1'}" class="timer">
     <img [ngStyle]="this.turn === 'red' ? {'display':'block'} : {'display':'none'}" src="assets/turn-background-red.svg" alt="timer">
     <img [ngStyle]="this.turn === 'yellow' ? {'display':'block'} : {'display':'none'}" src="assets/turn-background-yellow.svg" alt="timer">
     <div class="timer-wrapper">
-        <h3 *ngIf="this.turn === 'red'" class="heading-xs">PLAYER 1'S TURN</h3>
+        <h3 *ngIf="this.turn === 'red'" style="color: var(--white);" class="heading-xs">PLAYER 1'S TURN</h3>
         <h3 *ngIf="this.turn === 'yellow'" class="heading-xs">PLAYER 2'S TURN</h3>
-        <h4 class="heading-l">{{this.timer}}s</h4>
+        <h4 [ngStyle]="this.turn === 'red' ? {'color':'var(--white)'} : {'color':''}" class="heading-l">{{this.timer}}s</h4>
     </div>
 </div>
 <div *ngIf="roundOver" class="winner-container">

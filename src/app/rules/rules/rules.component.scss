@@ -41,3 +41,14 @@ button{
         fill: var(--dark-purple);
     }
 }
+
+@media screen and (max-width: 575px){
+    :host{
+        width: 90%;
+        padding: 0 1.5rem 3rem 1.5rem;
+    }
+    .heading-l{
+        margin: 1.5rem;
+    }
+    
+}

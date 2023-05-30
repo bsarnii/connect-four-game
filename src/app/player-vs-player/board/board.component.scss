@@ -8,8 +8,15 @@
     top:0;
     left: 0;
 }
+.layer-mobile{
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+}
 .black-layer{
-    z-index: 0
+    z-index: 0;
+    pointer-events: none;
 }
 .white-layer{
     z-index: 10;
@@ -96,6 +103,9 @@
     animation-name: dotAnimation-0;
     animation-duration: .1s;
 }
+.point-img-mobile{
+    display: none;
+}
 .winner-dot{
     height: 34px;
     width: 34px;
@@ -134,7 +144,7 @@
     top: 0;
     transform: translate(50%,-110%);
     opacity: 0;
-    transition: opacity .2s;
+    transition: opacity .15s;
 }
 
 .winner-container{
@@ -160,9 +170,86 @@
         margin: 0;
     }
 }
-
+@keyframes dotAnimation-5-mobile {
+    0% {top: -300px;}
+    100% {top: 0}
+}
+@keyframes dotAnimation-4-mobile {
+    0% {top: -250px;}
+    100% {top: 0}
+}
+@keyframes dotAnimation-3-mobile {
+    0% {top: -210px;}
+    100% {top: 0}
+}
+@keyframes dotAnimation-2-mobile {
+    0% {top: -150px;}
+    100% {top: 0}
+}
+@keyframes dotAnimation-1-mobile {
+    0% {top: -110px;}
+    100% {top: 0}
+}
+@keyframes dotAnimation-0-mobile {
+    0% {top: -50px;}
+    100% {top: 0}
+}
 @media screen and (max-width:768px){
     .marker{
         display: none;
+    }
+}
+@media screen and (max-width:575px){
+    .field-container{
+        overflow: visible;
+        gap: .4rem;
+        padding: .4rem 1.05rem 1.5rem .5rem;
+    }
+    .column{
+        gap: .05rem;
+    }
+    .point-img{
+        display:none;
+    }
+    .point-img-mobile{
+        display: block;
+    }
+    .layer{
+        display: none;
+    }
+    .layer-mobile{
+        display: block;
+    }
+    .dot{
+        height: 46px;
+        width: 40px;
+    }
+    .winner-dot{
+        width: 20px;
+        height: 20px;
+    }
+    .point-img-5{
+        animation: dotAnimation-5-mobile;
+        animation-duration: .5s;
+    }
+    .point-img-4{
+        animation: dotAnimation-4-mobile;
+        animation-duration: .4s;
+    }
+    .point-img-3{
+        animation: dotAnimation-3-mobile;
+        animation-duration: .3s;
+    }
+    .point-img-2{
+        animation: dotAnimation-2-mobile;
+        animation-duration: .2s;
+    }
+    .point-img-1{
+        animation: dotAnimation-1-mobile;
+        animation-duration: .1s;
+    }
+    .point-img-0{
+        animation: dotAnimation-0-mobile;
+        animation-duration: .1s;
     }
 }
