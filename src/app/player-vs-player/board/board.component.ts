@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Score } from '../types/score.interface';
 
 @Component({
   selector: 'app-board',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent {
-@Output() scoreOutput = new EventEmitter<any>();
+@Output() scoreOutput = new EventEmitter<Score>();
 @Output() winnerOutput = new EventEmitter<string>();
   board = 
   [

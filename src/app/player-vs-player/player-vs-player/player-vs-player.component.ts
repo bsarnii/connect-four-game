@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
+import { Score } from '../types/score.interface';
 
 @Component({
   selector: 'app-player-vs-player',
@@ -17,7 +18,7 @@ export class PlayerVsPlayerComponent implements OnInit {
   winner = "";
   menuOpened = false;
 
-  getScore(score:any){
+  getScore(score:Score){
     this.scoreRed = score.red;
     this.scoreYellow = score.yellow;
   }
