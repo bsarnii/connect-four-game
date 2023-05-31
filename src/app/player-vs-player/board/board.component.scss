@@ -170,30 +170,7 @@
         margin: 0;
     }
 }
-@keyframes dotAnimation-5-mobile {
-    0% {top: -300px;}
-    100% {top: 0}
-}
-@keyframes dotAnimation-4-mobile {
-    0% {top: -250px;}
-    100% {top: 0}
-}
-@keyframes dotAnimation-3-mobile {
-    0% {top: -210px;}
-    100% {top: 0}
-}
-@keyframes dotAnimation-2-mobile {
-    0% {top: -150px;}
-    100% {top: 0}
-}
-@keyframes dotAnimation-1-mobile {
-    0% {top: -110px;}
-    100% {top: 0}
-}
-@keyframes dotAnimation-0-mobile {
-    0% {top: -50px;}
-    100% {top: 0}
-}
+
 @media screen and (max-width:768px){
     .marker{
         display: none;
@@ -227,6 +204,30 @@
     .winner-dot{
         width: 20px;
         height: 20px;
+    }
+    @keyframes dotAnimation-5-mobile {
+        0% {top: -300px;}
+        100% {top: 0}
+    }
+    @keyframes dotAnimation-4-mobile {
+        0% {top: -250px;}
+        100% {top: 0}
+    }
+    @keyframes dotAnimation-3-mobile {
+        0% {top: -210px;}
+        100% {top: 0}
+    }
+    @keyframes dotAnimation-2-mobile {
+        0% {top: -150px;}
+        100% {top: 0}
+    }
+    @keyframes dotAnimation-1-mobile {
+        0% {top: -110px;}
+        100% {top: 0}
+    }
+    @keyframes dotAnimation-0-mobile {
+        0% {top: -50px;}
+        100% {top: 0}
     }
     .point-img-5{
         animation: dotAnimation-5-mobile;
